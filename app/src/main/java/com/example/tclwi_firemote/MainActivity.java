@@ -4,11 +4,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
+import org.w3c.dom.Text;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -18,11 +20,13 @@ public class MainActivity extends AppCompatActivity {
 
     private WebSocketClient mWebSocketClient;
     private String test= "<?xml version=\"1.0\" encoding=\"utf-8\"?><root><action name=\"setKey\" eventAction=\"TR_DOWN\" keyCode=\"TR_KEY_VOL_UP\" /></root>";
+    private TextView log;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        log = findViewById(R.id.TextMultiLine);
     }
 
     public void test(View v){
@@ -42,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onOpen(ServerHandshake serverHandshake) {
                 Log.i("Websocket", "Opened");
+                log.setText("soket otwarty");
                 mWebSocketClient.send(test);
             }
 
@@ -52,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         Log.i("Websocket", "mesage " + s);
+                        log.setText(log.getText()+"  mesage" + s);
                       //  TextView textView = (TextView)findViewById(R.id.messages);
                       //  textView.setText(textView.getText() + "\n" + message);
                     }
