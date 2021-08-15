@@ -11,7 +11,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:onClick="test"
         android:text="Button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,11 +36,11 @@
             <EditText
                 android:id="@+id/TextMultiLine"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="286dp"
                 android:ems="10"
                 android:gravity="start|top"
-                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"
-                android:inputType="TODO" />
+                android:inputType="textLongMessage"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
         </LinearLayout>
     </ScrollView>
 

@@ -3,6 +3,7 @@ package com.example.tclwi_firemote;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -21,17 +22,23 @@ public class MainActivity extends AppCompatActivity {
     private WebSocketClient mWebSocketClient;
     private String test= "<?xml version=\"1.0\" encoding=\"utf-8\"?><root><action name=\"setKey\" eventAction=\"TR_DOWN\" keyCode=\"TR_KEY_VOL_UP\" /></root>";
     private TextView log;
+    private Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         log = findViewById(R.id.TextMultiLine);
+        button=findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                connectWebSocket();
+            }
+        });
     }
 
-    public void test(View v){
-        connectWebSocket();
-    }
+
 
     private void connectWebSocket() {
         URI uri;
